@@ -43,6 +43,7 @@ Docs: https://docs.expo.dev/eas/index.md
 ## Términos y Condiciones y Política de Privacidad
 
 - **Siempre** que se agregue, cambie o quite una funcionalidad, antes de darla por terminada revisar si hay que actualizar `legal/terminos-y-condiciones.md` y `legal/politica-de-privacidad.md`: datos nuevos, proveedores o SDKs, permisos, almacenamiento, funciones que se describen en los textos. Los textos describen lo que el código hace hoy, no lo planeado. Si hay que cambiarlos, se hace en el mismo cambio; si no, se avisa que se revisó.
+- Las páginas públicas salen de esos mismos archivos: `scripts/generar-legales.mjs` las genera y `.github/workflows/legales.yml` las publica en GitHub Pages cada vez que `legal/` cambia en `main`.
 
 ## Pendientes para producción
 
