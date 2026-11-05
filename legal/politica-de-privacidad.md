@@ -1,6 +1,6 @@
 # Política de Privacidad de GestoApp
 
-**Última actualización:** 17 de octubre de 2026
+**Última actualización:** 5 de noviembre de 2026
 
 ## 1. Resumen
 
@@ -10,16 +10,16 @@
 - En iPhone, si tenés activada la copia de seguridad de iCloud, el sistema puede incluir los datos cifrados de la Aplicación en tu cuenta. En Android, la Aplicación no participa de la copia automática de Google.
 - Desde Configuración podés **exportar una copia cifrada con tu contraseña** y guardarla donde quieras, para recuperar tus datos si borrás la Aplicación.
 - El Titular **no recibe, no ve y no puede recuperar** los datos que cargues.
-- La Aplicación **no pide permisos** de cámara, ubicación, contactos, micrófono ni fotos. Usa Face ID o la huella solo para bloquearse, y la verificación la hace el sistema.
+- La Aplicación **no usa** la cámara, la ubicación, los contactos, el micrófono ni las fotos del dispositivo. Usa Face ID o la huella solo para bloquearse, y la verificación la hace el sistema.
 - Si cargás datos de pacientes, sos responsable de tratarlos conforme a la ley y al secreto profesional.
 
 Este resumen no reemplaza el texto completo que sigue.
 
 ## 2. Quién es el Titular
 
-La aplicación móvil **GestoApp** (la «Aplicación») pertenece a **Bautista Ribotta**, CUIT/CUIL 20-43365557-6, con domicilio en Boulevard Illia 336, X5000 Ciudad de Córdoba, Provincia de Córdoba, República Argentina (el «Titular»). Contacto: **bautistaribotta@hotmail.com**.
+La aplicación móvil **GestoApp** (la «Aplicación») pertenece a **Bautista Ribotta**, CUIT/CUIL 20-43365557-6, con domicilio en Formosa 09, Huinca Renancó, Córdoba, Argentina (el «Titular»). Contacto: **bautistaribotta@hotmail.com**.
 
-Esta Política complementa los Términos y Condiciones de Uso y se rige por la Ley 25.326 de Protección de los Datos Personales, su Decreto Reglamentario 1558/2001 y demás normas aplicables.
+Esta Política complementa los Términos y Condiciones de Uso y se rige por la Ley 25.326 de Protección de los Datos Personales, su Decreto Reglamentario 1558/2001 y demás normas aplicables, incluidas, cuando correspondan, las del país de residencia del Usuario.
 
 ## 3. Qué información se guarda y dónde
 
@@ -33,7 +33,8 @@ La Aplicación almacena la siguiente información **en una base de datos local d
 | Fecha de última menstruación (FUM) | Calcular la edad gestacional y las fechas clave cuando no hay ecografía |
 | Fecha y edad gestacional de una ecografía | Calcular la edad gestacional y las fechas clave (si está cargada, reemplaza a la FUM) y señalar discordancias con la FUM |
 | Notas libres y fecha de su última edición | Anotaciones del profesional |
-| Fecha de creación de la ficha | Ordenar el listado de pacientes |
+| Fecha de atención y de creación de la ficha | Ordenar el listado de pacientes |
+| Preferencia de bloqueo de la Aplicación | Recordar si el bloqueo está activado |
 | Versión de los Términos y de esta Política que el Usuario aceptó, y fecha de aceptación | Dejar constancia de la aceptación y volver a pedirla si los documentos cambian |
 
 El Usuario decide qué información carga. Salvo el nombre que elige para el saludo, ningún dato es obligatorio para usar la calculadora.
@@ -48,7 +49,7 @@ El Titular **no recopila, no recibe y no almacena** ningún dato personal del Us
 - no accede a la ubicación, la cámara, el micrófono, los contactos ni las fotos del dispositivo;
 - no comparte, vende ni cede datos a terceros.
 
-Como el Titular no tiene acceso a la información guardada en el dispositivo, no actúa como responsable de una base de datos con los datos de las pacientes en los términos de la Ley 25.326.
+Como el Titular no tiene acceso a la información guardada en el dispositivo, no actúa como responsable de una base de datos con los datos de las pacientes en los términos de la Ley 25.326 ni de otras normas equivalentes.
 
 ## 5. Datos de pacientes: rol y responsabilidad del Usuario
 
@@ -112,6 +113,8 @@ Como el Titular no tiene acceso a la información guardada en el dispositivo, no
 El Usuario puede ejercer en todo momento, directamente desde la Aplicación, los derechos de acceso, rectificación y supresión sobre la información que cargó, ya que tiene control total sobre ella. Para cualquier consulta sobre esta Política puede escribir a **bautistaribotta@hotmail.com**.
 
 El titular de los datos personales tiene la facultad de ejercer el derecho de acceso a ellos en forma gratuita a intervalos no inferiores a seis meses, salvo que se acredite un interés legítimo al efecto conforme lo establecido en el artículo 14, inciso 3, de la Ley 25.326. La Agencia de Acceso a la Información Pública, en su carácter de Órgano de Control de la Ley 25.326, tiene la atribución de atender las denuncias y reclamos que interpongan quienes resulten afectados en sus derechos por incumplimiento de las normas vigentes en materia de protección de datos personales.
+
+Si el Usuario vive en el Espacio Económico Europeo o en el Reino Unido, puede tener además los derechos que le reconocen el Reglamento General de Protección de Datos o su equivalente británico, y reclamar ante la autoridad de protección de datos de su país. Como el Titular no recibe datos de la Aplicación, esos derechos se ejercen directamente desde ella.
 
 ## 10. Tiendas de aplicaciones y sistema operativo
 

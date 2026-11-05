@@ -1,16 +1,16 @@
 # Términos y Condiciones de Uso de GestoApp
 
-**Última actualización:** 17 de octubre de 2026
+**Última actualización:** 5 de noviembre de 2026
 
 ## 1. Partes y aceptación
 
-1.1. Estos Términos y Condiciones (los «Términos») regulan el uso de la aplicación móvil **GestoApp** (la «Aplicación»), cuyo titular es **Bautista Ribotta**, CUIT/CUIL 20-43365557-6, con domicilio en Boulevard Illia 336, X5000 Ciudad de Córdoba, Provincia de Córdoba, República Argentina (el «Titular»).
+1.1. Estos Términos y Condiciones (los «Términos») regulan el uso de la aplicación móvil **GestoApp** (la «Aplicación»), cuyo titular es **Bautista Ribotta**, CUIT/CUIL 20-43365557-6, con domicilio en Formosa 09, Huinca Renancó, Córdoba, Argentina (el «Titular»).
 
 1.2. Quien descarga, instala o usa la Aplicación (el «Usuario») declara haber leído, entendido y aceptado estos Términos y la Política de Privacidad, que forma parte de ellos. Si no está de acuerdo, debe abstenerse de usar la Aplicación y desinstalarla.
 
 1.3. Para empezar a usar la Aplicación, el Usuario debe abrir estos Términos y la Política de Privacidad y aceptarlos expresamente tocando «Aceptar y continuar». La Aplicación guarda en el dispositivo la versión aceptada y la fecha, y vuelve a pedir la aceptación cuando alguno de los documentos cambia.
 
-1.4. La Aplicación es gratuita. No requiere registro, no exige pagos y no contiene publicidad.
+1.4. La Aplicación es gratuita. No requiere registro, no exige pagos y no contiene publicidad. Se puede descargar desde cualquier país en el que esté disponible en la tienda.
 
 ## 2. Destinatarios
 
@@ -31,7 +31,7 @@
 
 3.2. Los cálculos se basan en criterios de uso habitual en obstetricia: entre otros, la regla de Naegele para la datación por FUM y los umbrales de discordancia entre FUM y ecografía recomendados por el American College of Obstetricians and Gynecologists (ACOG). Estos criterios pueden revisarse, actualizarse o reemplazarse en futuras versiones de la Aplicación, y pueden no coincidir con los protocolos de cada institución.
 
-3.3. **La Aplicación no es un dispositivo médico** ni un producto médico registrado ante la Administración Nacional de Medicamentos, Alimentos y Tecnología Médica (ANMAT). No diagnostica, no indica tratamientos y no reemplaza el examen clínico, los estudios complementarios ni el criterio profesional.
+3.3. **La Aplicación no es un dispositivo médico** ni un producto médico registrado ante la Administración Nacional de Medicamentos, Alimentos y Tecnología Médica (ANMAT) ni ante autoridades sanitarias de otros países. No diagnostica, no indica tratamientos y no reemplaza el examen clínico, los estudios complementarios ni el criterio profesional.
 
 3.4. **La Aplicación no es una historia clínica** en los términos de la Ley 26.529 de Derechos del Paciente. Los registros que el Usuario cargue en ella son anotaciones de trabajo personales y no sustituyen la documentación clínica que el profesional esté obligado a llevar.
 
@@ -57,7 +57,7 @@
 - no permitir que terceros no autorizados accedan a la Aplicación en su dispositivo;
 - eliminar los datos de una paciente cuando ya no sean necesarios, y todos los datos antes de vender, regalar o desechar el dispositivo.
 
-5.3. El Usuario mantendrá indemne al Titular frente a cualquier reclamo de pacientes o de terceros que derive del uso que el Usuario haga de esos datos.
+5.3. En la medida en que la ley lo permita, el Usuario mantendrá indemne al Titular frente a cualquier reclamo de pacientes o de terceros que derive del uso que el Usuario haga de esos datos.
 
 ## 6. Conservación y pérdida de datos
 
@@ -77,7 +77,7 @@ El Usuario se compromete a usar la Aplicación conforme a la ley, a estos Térmi
 
 8.1. La Aplicación, su código fuente, su diseño, sus textos, su logotipo y su nombre son propiedad del Titular y están protegidos por la Ley 11.723 de Propiedad Intelectual y demás normas aplicables. Todos los derechos están reservados.
 
-8.2. El Titular otorga al Usuario una licencia de uso personal, gratuita, no exclusiva, intransferible y revocable para instalar y usar la Aplicación en sus dispositivos, conforme a estos Términos. Esta licencia no implica la cesión de ningún derecho de propiedad intelectual.
+8.2. La Aplicación se licencia, no se vende. El Titular otorga al Usuario una licencia de uso personal, limitada, gratuita, no exclusiva, intransferible y revocable para instalar y usar la Aplicación en sus dispositivos, conforme a estos Términos. Esta licencia no implica la cesión de ningún derecho de propiedad intelectual.
 
 8.3. Las tipografías y bibliotecas de terceros incluidas en la Aplicación se rigen por sus propias licencias.
 
@@ -93,7 +93,7 @@ El Usuario se compromete a usar la Aplicación conforme a la ley, a estos Térmi
 - accesos no autorizados al dispositivo del Usuario;
 - el incumplimiento, por parte del Usuario, de sus obligaciones profesionales o legales respecto de los datos de sus pacientes.
 
-9.3. Nada de lo dispuesto en estos Términos limita los derechos que la Ley 24.240 de Defensa del Consumidor y el Código Civil y Comercial de la Nación reconozcan al Usuario de forma irrenunciable, ni excluye la responsabilidad del Titular por dolo o culpa grave.
+9.3. Nada de lo dispuesto en estos Términos excluye ni limita los derechos irrenunciables que las leyes del país de residencia reconozcan al Usuario, como la Ley 24.240 de Defensa del Consumidor y el Código Civil y Comercial de la Nación en Argentina, o las normas de protección al consumidor del Espacio Económico Europeo y del Reino Unido. Tampoco limita la responsabilidad del Titular por dolo o culpa grave, por muerte o lesiones causadas por negligencia, ni ninguna otra que la ley no permita excluir.
 
 ## 10. Servicios de terceros
 
@@ -101,7 +101,7 @@ La Aplicación se descarga a través de tiendas de terceros (App Store de Apple 
 
 ## 11. Cambios en la Aplicación y en los Términos
 
-11.1. El Titular puede modificar, actualizar o discontinuar la Aplicación o cualquiera de sus funciones en cualquier momento.
+11.1. El Titular puede modificar, actualizar o discontinuar la Aplicación o cualquiera de sus funciones en cualquier momento. No garantiza que esté disponible en todos los dispositivos ni que siempre se publiquen actualizaciones. Si la discontinúa, los datos guardados en el dispositivo siguen siendo del Usuario, que puede exportarlos mientras la Aplicación funcione.
 
 11.2. El Titular puede modificar estos Términos. La nueva versión se publicará en la Aplicación con su fecha de actualización. Si los cambios son relevantes, se avisará al Usuario dentro de la Aplicación y se le pedirá que los acepte nuevamente. Si el Usuario no está de acuerdo, puede dejar de usar la Aplicación y desinstalarla.
 
@@ -119,7 +119,9 @@ Estos Términos rigen mientras el Usuario tenga instalada o use la Aplicación. 
 
 14.1. Estos Términos se rigen por las leyes de la República Argentina.
 
-14.2. Cualquier controversia se someterá a los tribunales ordinarios competentes según la normativa aplicable. Cuando el Usuario revista el carácter de consumidor, será competente el tribunal correspondiente a su domicilio, conforme al artículo 36 de la Ley 24.240.
+14.2. Cualquier controversia se someterá a los tribunales ordinarios de la ciudad de Córdoba. Cuando el Usuario revista el carácter de consumidor en Argentina, será competente el tribunal correspondiente a su domicilio, conforme al artículo 36 de la Ley 24.240.
+
+14.3. El consumidor con residencia en el Espacio Económico Europeo o en el Reino Unido conserva la protección de las normas imperativas de su país y puede reclamar ante los tribunales de su domicilio.
 
 ## 15. Contacto
 
