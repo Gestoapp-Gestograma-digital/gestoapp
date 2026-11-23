@@ -1,6 +1,6 @@
 # Términos y Condiciones de Uso de GestoApp
 
-**Última actualización:** 5 de noviembre de 2026
+**Última actualización:** 23 de noviembre de 2026
 
 ## 1. Partes y aceptación
 
@@ -61,7 +61,7 @@
 
 ## 6. Conservación y pérdida de datos
 
-6.1. La Aplicación no guarda copias de los datos en servidores del Titular ni ofrece un servicio de respaldo propio. Si el Usuario desinstala la Aplicación, borra sus datos, restablece el dispositivo o lo pierde, la información registrada puede perderse de forma definitiva, salvo que pueda recuperarla desde una copia que haya exportado desde la Aplicación o, en iPhone, desde una copia de seguridad de iCloud, según se explica en la Política de Privacidad.
+6.1. La Aplicación no guarda copias de los datos en servidores del Titular ni ofrece un servicio de respaldo propio. Si el Usuario desinstala la Aplicación, borra sus datos, restablece el dispositivo o lo pierde, la información registrada puede perderse de forma definitiva, salvo que pueda recuperarla desde una copia que haya exportado desde la Aplicación o, en iPhone y iPad, desde una copia de seguridad de iCloud, según se explica en la Política de Privacidad.
 
 6.2. El resguardo de la información es responsabilidad del Usuario, incluidos los archivos de copia que exporte y la contraseña con que los cifre. El Titular no responde por la pérdida de datos almacenados en el dispositivo.
 

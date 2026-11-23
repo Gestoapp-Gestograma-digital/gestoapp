@@ -17,11 +17,12 @@ npx expo install <package>  # ALWAYS use instead of npm/yarn/pnpm/bun add — re
 npx expo start              # start the dev server
 npx expo lint               # lint
 npx tsc --noEmit            # typecheck
+npm test                    # unit tests (Jest + jest-expo, files in src/**/__tests__/*-test.ts)
 npx expo-doctor             # diagnose dependency and config issues
 npx expo install --fix      # fix incompatible package versions
 ```
 
-Run lint and typecheck before declaring any task done.
+Run lint, typecheck and tests before declaring any task done. Add or update tests when changing the logic in `src/lib/` or `src/db/` (gestation, dates, migrations, backups).
 
 ## Navigation & Routing
 
@@ -39,6 +40,10 @@ Docs: https://docs.expo.dev/eas/index.md
 - If `ios/` and `android/` directories do not exist, they are generated (Continuous Native Generation). Never create or edit them by hand — configure native behavior in `app.json` and config plugins.
 - Expo Go only includes its bundled native modules. After adding a library with native code, the app needs a development build: `npx expo run:ios|android` locally, or `eas build --profile development`.
 - Prefer recommended Expo modules over third-party libraries, and check your available skills before adding dependencies. Docs: https://docs.expo.dev/versions/latest/index.md
+
+## iPad y ventanas anchas
+
+La app soporta iPad (`ios.supportsTablet`), con todas las orientaciones en iPad y solo vertical en iPhone. Desde iOS 27 las ventanas además se pueden redimensionar, así que ninguna pantalla puede depender del ancho del teléfono. El contenido va en una columna centrada de `CONTENT_MAX_WIDTH` (600 pt, en `src/theme`): en cada pantalla nueva, usar `useContentGutter(base)` de `src/hooks/use-content-gutter.ts` como `paddingHorizontal` del contenido y de las barras fijas (encabezado, botón de abajo), y `maxWidth: CONTENT_MAX_WIDTH` en hojas y diálogos. En los textos, nombrar el dispositivo con `DEVICE_NAME` de `src/lib/device.ts` («iPad» o «teléfono»).
 
 ## Términos y Condiciones y Política de Privacidad
 
@@ -61,16 +66,16 @@ Expo Go no trae SQLCipher ni Face ID. En Expo Go la app sigue funcionando, pero 
 
 ### Configuración que falta antes de publicar
 
-- **`app.json`:** `ios.bundleIdentifier` y decidir `ios.supportsTablet`. Ya están el nombre visible (`GestoApp`) y `android.package` (`com.gestoapp`, no se puede cambiar una vez publicado). `versionCode` y `buildNumber` los maneja EAS (`appVersionSource: "remote"` y `autoIncrement` en `production`).
-- **`eas.json`:** listo, con los perfiles `development` (usa `expo-dev-client`), `preview` (APK para instalar directo) y `production` (AAB para Play). Falta vincular el proyecto con `npx eas-cli@latest init`.
+- **`app.json`:** listo. Nombre visible `GestoApp`, `ios.bundleIdentifier` y `android.package` `com.gestoapp` (no se pueden cambiar una vez publicados) y `ios.supportsTablet: true`. `versionCode` y `buildNumber` los maneja EAS (`appVersionSource: "remote"` y `autoIncrement` en `production`).
+- **`eas.json`:** listo, con los perfiles `development` (usa `expo-dev-client`), `preview` (APK para instalar directo) y `production` (AAB para Play). Ya está vinculado con EAS (`extra.eas.projectId` y `owner` en `app.json`).
 - **Cifrado y exportación (iOS):** la app usa cifrado estándar (AES-256 en la base y en la copia exportada). Responder las preguntas de cumplimiento de exportación de App Store Connect y declarar `ITSAppUsesNonExemptEncryption` en `ios.infoPlist` según corresponda. Verificar con la documentación de Apple si aplica la exención para cifrado de protección de datos.
 - **Permisos de Android:** revisar el `AndroidManifest.xml` que genera el prebuild y bloquear con `android.blockedPermissions` todo lo que no se use. `READ_MEDIA_IMAGES`, que agrega `expo-screen-capture`, y los permisos de almacenamiento ya están bloqueados: la base vive en el espacio privado de la app y las copias usan los selectores del sistema. La política de privacidad dice que la app no usa la cámara, la ubicación, los contactos, el micrófono ni las fotos. `expo-local-authentication` agrega `USE_BIOMETRIC` (necesario) y `USE_FINGERPRINT` (obsoleto).
 - **Manifiesto de privacidad de iOS (`PrivacyInfo.xcprivacy`):** confirmar que cubra las APIs de motivo requerido que usan las dependencias; si hace falta, completarlo con `ios.privacyManifests` en `app.json`.
 - **Declaraciones en las tiendas:** URL pública de la política de privacidad; etiquetas de privacidad en App Store Connect; sección de seguridad de los datos en Play Console (los datos no salen del dispositivo y se cifran); declaración de apps de salud de Google Play. Apple revisa con cuidado las apps médicas (guía 1.4.1): presentar la app como herramienta de apoyo, sin decir que diagnostica.
-- **SDK de Expo:** el proyecto está en SDK 57 (Expo 57.0.30). La nueva Expo Go solo abre SDK 58; pasar a 58 antes de publicar o al empezar a trabajar con development builds. Al subir: `File.write()` pasa a ser asíncrono (afecta a `src/app/copia/exportar.tsx`) y hay que probar a fondo la navegación de Expo Router.
+- **SDK de Expo:** el proyecto está en SDK 58 (React Native 0.88). Hay que hacer un development build nuevo y probar a fondo la navegación de Expo Router (cambió su núcleo; en especial el paso del onboarding a Inicio con `Stack.Protected`). En Android, R8 viene activado en los builds de release: probar un build de `production` o `preview` completo (base cifrada, bloqueo, exportar e importar).
 
 ### Antes de publicar, también
 
 - **Textos legales:** la versión que se acepta se arma con la fecha de «Última actualización» de cada documento (`LEGAL_VERSION` en `src/lib/legal.ts`). Si se cambia un texto, cambiar también la fecha, o no se vuelve a pedir la aceptación.
-- **Monitoreo de errores:** hoy no hay. Si se agrega un servicio externo, antes hay que actualizar la política de privacidad (cláusula 12), porque dice que no se envía nada fuera del dispositivo.
+- **Monitoreo de errores:** decidido no usar ninguno. No agregar servicios de monitoreo ni analítica: la política de privacidad dice que no se envía nada fuera del dispositivo.
 - **Velocidad del cifrado de la copia:** scrypt con N = 2^14 tarda unos 3-4 segundos en el teléfono (aceptado). Los parámetros viajan en el archivo, así que se pueden cambiar sin romper copias viejas.

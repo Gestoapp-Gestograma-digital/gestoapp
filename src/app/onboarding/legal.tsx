@@ -7,6 +7,7 @@ import { Button } from '@/components/button';
 import { LegalConsentCard } from '@/components/legal-consent-card';
 import { ScreenHeader } from '@/components/screen-header';
 import { isProfileTitle } from '@/db/profile';
+import { useContentGutter } from '@/hooks/use-content-gutter';
 import { LEGAL_DOC_IDS, LEGAL_DOCS, type LegalDocId } from '@/lib/legal';
 import { useErrorDialog } from '@/providers/error-dialog-provider';
 import { useProfile } from '@/providers/profile-provider';
@@ -18,6 +19,7 @@ const NONE: DocFlags = { terminos: false, privacidad: false };
 
 /** Paso 2 del onboarding: abrir y aceptar los Términos y la Política de Privacidad. */
 export default function OnboardingLegalScreen() {
+  const gutter = useContentGutter(20);
   const params = useLocalSearchParams<{ title?: string; name?: string }>();
   const { completeOnboarding } = useProfile();
   const showError = useErrorDialog();
@@ -54,7 +56,9 @@ export default function OnboardingLegalScreen() {
     <View style={styles.screen}>
       <ScreenHeader />
 
-      <ScrollView style={styles.flex} contentContainerStyle={styles.content}>
+      <ScrollView
+        style={styles.flex}
+        contentContainerStyle={[styles.content, { paddingHorizontal: gutter }]}>
         <View style={styles.intro}>
           <Text style={styles.brand}>GESTOAPP · PASO 2 DE 2</Text>
           <Text style={styles.heading} accessibilityRole="header">
@@ -76,7 +80,7 @@ export default function OnboardingLegalScreen() {
         ))}
       </ScrollView>
 
-      <SafeAreaView edges={['bottom']} style={styles.footer}>
+      <SafeAreaView edges={['bottom']} style={[styles.footer, { paddingHorizontal: gutter }]}>
         <Text style={styles.consent}>
           {allRead
             ? 'Al tocar «Aceptar y continuar», aceptás los Términos y Condiciones y la Política de Privacidad.'

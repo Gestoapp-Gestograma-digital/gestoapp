@@ -6,6 +6,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { greeting } from '@/db/profile';
+import { useContentGutter } from '@/hooks/use-content-gutter';
 import { formatLongDay } from '@/lib/dates';
 import { useProfile } from '@/providers/profile-provider';
 import { colors, fonts } from '@/theme';
@@ -15,10 +16,12 @@ import { useToday } from '@/providers/today-provider';
 export default function HomeTabsLayout() {
   const { profile } = useProfile();
   const today = useToday();
+  // En iPad el saludo y las pestañas se alinean con la columna de contenido.
+  const gutter = useContentGutter(16);
 
   return (
     <Tabs style={styles.root}>
-      <SafeAreaView edges={['top']} style={styles.header}>
+      <SafeAreaView edges={['top']} style={[styles.header, { paddingHorizontal: gutter }]}>
         <View style={styles.headerText}>
           <Text style={styles.date}>{formatLongDay(today)}</Text>
           {/* Tocar el saludo abre el perfil (opción 4a del diseño). */}
@@ -50,7 +53,7 @@ export default function HomeTabsLayout() {
         <TabSlot />
       </View>
       <TabList asChild>
-        <SafeAreaView edges={['bottom']} style={styles.tabBar}>
+        <SafeAreaView edges={['bottom']} style={[styles.tabBar, { paddingHorizontal: gutter }]}>
           {/* Cálculo rápido va primero y es la pestaña con la que abre la app («/»). */}
           <TabTrigger name="index" href="/" asChild>
             <TabButton label="Cálculo rápido" />

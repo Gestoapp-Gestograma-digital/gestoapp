@@ -1,13 +1,13 @@
 # Política de Privacidad de GestoApp
 
-**Última actualización:** 5 de noviembre de 2026
+**Última actualización:** 23 de noviembre de 2026
 
 ## 1. Resumen
 
 - GestoApp **guarda la información en tu dispositivo**.
 - **No** tiene servidores, cuentas de usuario, analítica, publicidad ni rastreadores.
-- Los datos se guardan **cifrados**, y la Aplicación se bloquea con Face ID, la huella o el código del teléfono.
-- En iPhone, si tenés activada la copia de seguridad de iCloud, el sistema puede incluir los datos cifrados de la Aplicación en tu cuenta. En Android, la Aplicación no participa de la copia automática de Google.
+- Los datos se guardan **cifrados**, y la Aplicación se bloquea con Face ID, la huella o el código del dispositivo.
+- En iPhone y iPad, si tenés activada la copia de seguridad de iCloud, el sistema puede incluir los datos cifrados de la Aplicación en tu cuenta. En Android, la Aplicación no participa de la copia automática de Google.
 - Desde Configuración podés **exportar una copia cifrada con tu contraseña** y guardarla donde quieras, para recuperar tus datos si borrás la Aplicación.
 - El Titular **no recibe, no ve y no puede recuperar** los datos que cargues.
 - La Aplicación **no usa** la cámara, la ubicación, los contactos, el micrófono ni las fotos del dispositivo. Usa Face ID o la huella solo para bloquearse, y la verificación la hace el sistema.
@@ -66,7 +66,7 @@ Como el Titular no tiene acceso a la información guardada en el dispositivo, no
 6.2. Además, la Aplicación protege los datos de la siguiente forma:
 
 - la base de datos se guarda **cifrada** con AES-256 (SQLCipher). La clave se genera al azar en el propio dispositivo y se guarda en el almacén seguro del sistema (el llavero de iOS o el Keystore de Android), nunca junto a la base de datos ni fuera del dispositivo;
-- la Aplicación se **bloquea** con Face ID, la huella o el código del teléfono al abrirla y al volver a ella después de un minuto. El Usuario puede desactivar el bloqueo desde Configuración, previa autenticación. La Aplicación no recibe ni guarda los datos biométricos: la verificación la hace el sistema operativo;
+- la Aplicación se **bloquea** con Face ID, la huella o el código del dispositivo al abrirla y al volver a ella después de un minuto. El Usuario puede desactivar el bloqueo desde Configuración, previa autenticación. La Aplicación no recibe ni guarda los datos biométricos: la verificación la hace el sistema operativo;
 - el contenido de la Aplicación se **oculta en el selector de aplicaciones** del sistema. En Android, esto también impide sacar capturas de pantalla dentro de la Aplicación.
 
 6.3. La seguridad de los datos depende también del dispositivo. El Usuario es responsable de:
@@ -78,13 +78,13 @@ Como el Titular no tiene acceso a la información guardada en el dispositivo, no
 
 ## 7. Copias de seguridad
 
-7.1. La Aplicación no tiene un servicio de respaldo en servidores propios y el Titular no guarda copias de los datos. Para recuperar los datos si se borra la Aplicación o se cambia de teléfono, la forma recomendada es la copia que el Usuario exporta desde la Aplicación (cláusulas 7.6 a 7.9).
+7.1. La Aplicación no tiene un servicio de respaldo en servidores propios y el Titular no guarda copias de los datos. Para recuperar los datos si se borra la Aplicación o se cambia de dispositivo, la forma recomendada es la copia que el Usuario exporta desde la Aplicación (cláusulas 7.6 a 7.9).
 
-7.2. En iPhone, si el Usuario tiene activada la copia de seguridad de iCloud o hace copias cifradas en una computadora, el sistema incluye la base de datos cifrada de la Aplicación y su clave. Esas copias las hace Apple según la configuración del Usuario, se guardan en su cuenta y se rigen por la política de privacidad de Apple. El Titular no tiene acceso a ellas.
+7.2. En iPhone y iPad, si el Usuario tiene activada la copia de seguridad de iCloud o hace copias cifradas en una computadora, el sistema incluye la base de datos cifrada de la Aplicación y su clave. Esas copias las hace Apple según la configuración del Usuario, se guardan en su cuenta y se rigen por la política de privacidad de Apple. El Titular no tiene acceso a ellas.
 
-7.3. En Android, la Aplicación no participa de la copia de seguridad automática de Google: la clave de la base de datos no sale del dispositivo, así que una copia de la base no podría abrirse en otro teléfono.
+7.3. En Android, la Aplicación no participa de la copia de seguridad automática de Google: la clave de la base de datos no sale del dispositivo, así que una copia de la base no podría abrirse en otro dispositivo.
 
-7.4. Con la copia de iCloud, los datos se recuperan al restaurar el iPhone completo desde esa copia. Borrar la Aplicación y volver a instalarla no los recupera por sí solo; para eso está la copia exportada.
+7.4. Con la copia de iCloud, los datos se recuperan al restaurar el iPhone o el iPad completo desde esa copia. Borrar la Aplicación y volver a instalarla no los recupera por sí solo; para eso está la copia exportada.
 
 7.5. Como los datos de pacientes son sensibles, el Usuario debe evaluar si guardarlos en estas copias es compatible con sus obligaciones de confidencialidad y, si las usa, proteger su cuenta de Apple con una contraseña segura y verificación en dos pasos.
 

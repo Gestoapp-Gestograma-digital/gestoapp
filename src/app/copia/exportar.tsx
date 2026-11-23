@@ -10,6 +10,7 @@ import { Button } from '@/components/button';
 import { TextField } from '@/components/field';
 import { ScreenHeader } from '@/components/screen-header';
 import { readBackupData } from '@/db/backup';
+import { useContentGutter } from '@/hooks/use-content-gutter';
 import { MIN_PASSWORD_LENGTH, encryptBackup } from '@/lib/backup-crypto';
 import { isoFromDay, todayDay } from '@/lib/dates';
 import { useErrorDialog } from '@/providers/error-dialog-provider';
@@ -28,6 +29,7 @@ function clearOldExports() {
 
 /** Exportar: cifra las pacientes y el perfil con una contraseña y abre el menú para guardar el archivo. */
 export default function ExportBackupScreen() {
+  const gutter = useContentGutter(16);
   const db = useSQLiteContext();
   const showError = useErrorDialog();
   const showToast = useToast();
@@ -78,7 +80,7 @@ export default function ExportBackupScreen() {
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <ScrollView
           style={styles.flex}
-          contentContainerStyle={styles.content}
+          contentContainerStyle={[styles.content, { paddingHorizontal: gutter }]}
           keyboardShouldPersistTaps="handled">
           <Text style={styles.lead}>
             La copia guarda tus pacientes con sus notas y tu perfil en un archivo cifrado. Después
@@ -117,7 +119,7 @@ export default function ExportBackupScreen() {
           </Text>
         </ScrollView>
 
-        <SafeAreaView edges={['bottom']} style={styles.footer}>
+        <SafeAreaView edges={['bottom']} style={[styles.footer, { paddingHorizontal: gutter }]}>
           <Button
             label="Crear copia"
             size="lg"

@@ -8,11 +8,13 @@ import { TextField } from '@/components/field';
 import { Logo } from '@/components/logo';
 import { TitlePicker } from '@/components/title-picker';
 import { greeting, type ProfileTitle } from '@/db/profile';
+import { useContentGutter } from '@/hooks/use-content-gutter';
 import { useProfile } from '@/providers/profile-provider';
 import { colors, fonts } from '@/theme';
 
 /** Paso 1 del onboarding: cómo saludar a la persona en Inicio. */
 export default function OnboardingNameScreen() {
+  const gutter = useContentGutter(20);
   // Si ya hay perfil (por ejemplo, cambiaron los documentos legales), se parte de esos datos.
   const { profile } = useProfile();
   const [title, setTitle] = useState<ProfileTitle>(profile?.title ?? 'Dra.');
@@ -32,7 +34,7 @@ export default function OnboardingNameScreen() {
         style={styles.flex}
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <ScrollView
-          contentContainerStyle={styles.content}
+          contentContainerStyle={[styles.content, { paddingHorizontal: gutter }]}
           keyboardShouldPersistTaps="handled">
           <View style={styles.intro}>
             <View style={styles.logo}>

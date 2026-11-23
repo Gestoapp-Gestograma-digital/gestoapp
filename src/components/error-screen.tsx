@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { AlertTriangle } from '@/components/alert-icons';
 import { Button } from '@/components/button';
 import { DatabaseError } from '@/db/database-error';
+import { useContentGutter } from '@/hooks/use-content-gutter';
 import { colors, fonts } from '@/theme';
 
 type ErrorScreenProps = {
@@ -14,6 +15,7 @@ type ErrorScreenProps = {
 
 /** Pantalla completa cuando algo falla al mostrar la app, con la opción de reintentar. */
 export function ErrorScreen({ error, retry }: ErrorScreenProps) {
+  const gutter = useContentGutter(20);
   const [retrying, setRetrying] = useState(false);
   const fromDatabase = error instanceof DatabaseError;
 
@@ -28,7 +30,7 @@ export function ErrorScreen({ error, retry }: ErrorScreenProps) {
 
   return (
     <SafeAreaView style={styles.screen}>
-      <ScrollView contentContainerStyle={styles.content}>
+      <ScrollView contentContainerStyle={[styles.content, { paddingHorizontal: gutter }]}>
         <View style={styles.warning}>
           <AlertTriangle />
           <Text style={styles.warningText}>Algo salió mal</Text>
@@ -42,7 +44,7 @@ export function ErrorScreen({ error, retry }: ErrorScreenProps) {
         {/* El detalle técnico solo en desarrollo: en producción no aporta y puede confundir. */}
         {__DEV__ ? <Text style={styles.detail}>{error.message}</Text> : null}
       </ScrollView>
-      <View style={styles.footer}>
+      <View style={[styles.footer, { paddingHorizontal: gutter }]}>
         <Button
           label="Reintentar"
           size="lg"

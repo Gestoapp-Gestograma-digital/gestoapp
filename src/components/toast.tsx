@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { useContentGutter } from '@/hooks/use-content-gutter';
 import { colors, fonts } from '@/theme';
 
 export type ToastPlacement = 'bottom' | 'tabBar';
@@ -33,6 +34,7 @@ type ToastProps = {
 /** Aviso oscuro abajo de la pantalla con ✓, mensaje, «Deshacer» opcional y cierre. Entra y sale desde abajo. */
 export function Toast({ message, placement, leaving, onUndo, onClose, onExited }: ToastProps) {
   const insets = useSafeAreaInsets();
+  const gutter = useContentGutter(12);
   const [appear] = useState(() => new Animated.Value(0));
 
   useEffect(() => {
@@ -65,7 +67,7 @@ export function Toast({ message, placement, leaving, onUndo, onClose, onExited }
       style={[
         styles.toast,
         leaving && styles.leaving,
-        { bottom },
+        { bottom, left: gutter, right: gutter },
         {
           opacity: appear.interpolate({ inputRange: [0, 0.4, 1], outputRange: [0, 1, 1] }),
           transform: [
@@ -103,9 +105,8 @@ export function Toast({ message, placement, leaving, onUndo, onClose, onExited }
 
 const styles = StyleSheet.create({
   toast: {
+    // left y right salen de useContentGutter: 12 en el teléfono, centrado en iPad.
     position: 'absolute',
-    left: 12,
-    right: 12,
     zIndex: 20,
     // 44 de los botones + 6 arriba y abajo.
     minHeight: 56,

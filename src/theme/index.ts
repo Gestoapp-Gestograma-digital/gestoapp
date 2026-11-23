@@ -34,6 +34,9 @@ export const colors = Object.fromEntries(
   Object.entries(palette).map(([name, value]) => [name, oklchToRgba(value)]),
 ) as Record<ColorName, string>;
 
+/** Ancho máximo de la columna de contenido: en iPad, o con la ventana ancha, se centra. */
+export const CONTENT_MAX_WIDTH = 600;
+
 export const fonts = {
   regular: 'AtkinsonHyperlegibleNext_400Regular',
   medium: 'AtkinsonHyperlegibleNext_500Medium',

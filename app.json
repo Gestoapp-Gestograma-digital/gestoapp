@@ -8,6 +8,8 @@
     "scheme": "gestoapp",
     "userInterfaceStyle": "light",
     "ios": {
+      "bundleIdentifier": "com.gestoapp",
+      "supportsTablet": true,
       "icon": "./assets/images/icon.png"
     },
     "android": {

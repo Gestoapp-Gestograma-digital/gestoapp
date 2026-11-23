@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { BackButton } from '@/components/back-button';
+import { useContentGutter } from '@/hooks/use-content-gutter';
 import { colors, fonts } from '@/theme';
 
 type ScreenHeaderProps = {
@@ -19,9 +20,11 @@ type ScreenHeaderProps = {
 
 /** Barra superior de las pantallas secundarias: botón Atrás, título opcional centrado y una acción. */
 export function ScreenHeader({ title, backLabel, backChevron, right, divider }: ScreenHeaderProps) {
+  // En iPad el botón de volver y la acción se alinean con la columna de contenido.
+  const gutter = useContentGutter(8);
   return (
     <SafeAreaView edges={['top']} style={styles.safeArea}>
-      <View style={[styles.bar, divider && styles.divider]}>
+      <View style={[styles.bar, { paddingHorizontal: gutter }, divider && styles.divider]}>
         <View style={styles.side}>
           <BackButton label={backLabel} chevron={backChevron} />
         </View>

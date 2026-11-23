@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { Button } from '@/components/button';
 import { Logo } from '@/components/logo';
+import { useContentGutter } from '@/hooks/use-content-gutter';
 import { colors, fonts } from '@/theme';
 
 type EmptyPatientsProps = {
@@ -13,8 +14,9 @@ type EmptyPatientsProps = {
 
 /** Inicio sin pacientes: logo, qué hace la app y las tres acciones, en un solo bloque centrado. */
 export function EmptyPatients({ onNew, onImport, onQuickCalc }: EmptyPatientsProps) {
+  const gutter = useContentGutter(38);
   return (
-    <View style={styles.screen}>
+    <View style={[styles.screen, { paddingHorizontal: gutter }]}>
       <View style={styles.brand}>
         <Logo size={96} />
         <Text style={styles.wordmark}>GestoApp</Text>

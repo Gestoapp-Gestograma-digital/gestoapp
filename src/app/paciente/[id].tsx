@@ -20,6 +20,7 @@ import {
   updatePatientNote,
   type Patient,
 } from '@/db/patients';
+import { useContentGutter } from '@/hooks/use-content-gutter';
 import { useDelayedFlag } from '@/hooks/use-delayed-flag';
 import { dayFromIso, seenLabel } from '@/lib/dates';
 import {
@@ -47,10 +48,10 @@ export default function PatientScreen() {
   const showToast = useToast();
   const showError = useErrorDialog();
 
-  // Si una recarga falla con la ficha ya en pantalla, se deja la que estaba.
   // Número de la última carga pedida: si una respuesta llega después de otra más nueva, se descarta.
   const latestLoad = useRef(0);
 
+  // Si una recarga falla con la ficha ya en pantalla, se deja la que estaba.
   const load = useCallback(() => {
     const request = ++latestLoad.current;
     getPatient(db, Number(id)).then(
@@ -176,6 +177,7 @@ type PatientDetailProps = {
 };
 
 function PatientDetail({ patient, onSaveNote, onDelete }: PatientDetailProps) {
+  const gutter = useContentGutter(16);
   const today = useToday();
   const reference = datingReference(patient, today);
   const gestation = reference ? gestationFromReference(reference.day, today) : null;
@@ -186,7 +188,9 @@ function PatientDetail({ patient, onSaveNote, onDelete }: PatientDetailProps) {
     <KeyboardAvoidingView
       style={styles.flex}
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-      <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
+      <ScrollView
+      contentContainerStyle={[styles.content, { paddingHorizontal: gutter }]}
+      keyboardShouldPersistTaps="handled">
         <View style={styles.card}>
           <View style={styles.identity}>
             <Avatar name={patient.name} size="lg" />

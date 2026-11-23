@@ -3,6 +3,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Button } from '@/components/button';
 import { Logo } from '@/components/logo';
+import { useContentGutter } from '@/hooks/use-content-gutter';
 import { colors, fonts } from '@/theme';
 
 type LockScreenProps = {
@@ -16,9 +17,11 @@ type LockScreenProps = {
 
 /** Tapa la app mientras está bloqueada. La app sigue montada debajo, sin perder lo que estaba abierto. */
 export function LockScreen({ method, checking, unlocking, onUnlock }: LockScreenProps) {
+  const contentGutter = useContentGutter(38);
+  const footerGutter = useContentGutter(20);
   return (
     <SafeAreaView style={styles.screen} accessibilityViewIsModal>
-      <View style={styles.content}>
+      <View style={[styles.content, { paddingHorizontal: contentGutter }]}>
         <Logo size={72} />
         {checking ? null : (
           <View style={styles.copy}>
@@ -30,7 +33,7 @@ export function LockScreen({ method, checking, unlocking, onUnlock }: LockScreen
         )}
       </View>
       {checking ? null : (
-        <View style={styles.footer}>
+        <View style={[styles.footer, { paddingHorizontal: footerGutter }]}>
           <Button
             label="Desbloquear"
             size="lg"

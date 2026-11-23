@@ -3,7 +3,9 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { ScreenHeader } from '@/components/screen-header';
 import { SwitchRow } from '@/components/switch-row';
+import { useContentGutter } from '@/hooks/use-content-gutter';
 import { dayFromIso, formatDay } from '@/lib/dates';
+import { DEVICE_NAME } from '@/lib/device';
 import { LEGAL_DOC_IDS, LEGAL_DOCS } from '@/lib/legal';
 import { RELOCK_AFTER_MS, useAppLock } from '@/providers/app-lock-provider';
 import { useErrorDialog } from '@/providers/error-dialog-provider';
@@ -25,6 +27,7 @@ const BACKUP_ACTIONS = [
 
 /** Configuración: bloqueo, copia de seguridad y la sección Legal para volver a leer los documentos. */
 export default function SettingsScreen() {
+  const gutter = useContentGutter(16);
   const { legal } = useProfile();
   const lock = useAppLock();
   const showError = useErrorDialog();
@@ -43,7 +46,9 @@ export default function SettingsScreen() {
     <View style={styles.screen}>
       <ScreenHeader title="Configuración" backLabel="Inicio" />
 
-      <ScrollView style={styles.flex} contentContainerStyle={styles.content}>
+      <ScrollView
+        style={styles.flex}
+        contentContainerStyle={[styles.content, { paddingHorizontal: gutter }]}>
         <View style={styles.section}>
           <Text style={styles.sectionLabel} accessibilityRole="header">
             Seguridad
@@ -58,7 +63,7 @@ export default function SettingsScreen() {
               />
             ) : (
               <Text style={styles.unavailable}>
-                Para bloquear GestoApp, configurá un código, tu huella o tu rostro en el teléfono.
+                Para bloquear GestoApp, configurá un código, tu huella o tu rostro en el {DEVICE_NAME}.
               </Text>
             )}
           </View>

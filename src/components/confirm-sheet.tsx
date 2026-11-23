@@ -3,7 +3,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { AlertTriangle } from '@/components/alert-icons';
 import { Button } from '@/components/button';
-import { colors, fonts } from '@/theme';
+import { colors, CONTENT_MAX_WIDTH, fonts } from '@/theme';
 
 type ConfirmSheetProps = {
   visible: boolean;
@@ -69,6 +69,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   sheet: {
+    // En iPad la hoja no ocupa todo el ancho: se centra con el de la columna de contenido.
+    width: '100%',
+    maxWidth: CONTENT_MAX_WIDTH,
+    alignSelf: 'center',
     backgroundColor: colors.surface,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,

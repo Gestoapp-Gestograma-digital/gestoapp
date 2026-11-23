@@ -10,6 +10,7 @@ import { LoadError } from '@/components/load-error';
 import { PatientList } from '@/components/patient-list';
 import { SearchField } from '@/components/search-field';
 import { listPatients, onPatientsChanged, type Patient } from '@/db/patients';
+import { useContentGutter } from '@/hooks/use-content-gutter';
 import { useDelayedFlag } from '@/hooks/use-delayed-flag';
 import { logError } from '@/lib/log';
 import { normalizeForSearch } from '@/lib/text';
@@ -18,6 +19,7 @@ import { colors, fonts } from '@/theme';
 import { useToday } from '@/providers/today-provider';
 
 export default function PatientsScreen() {
+  const gutter = useContentGutter(16);
   const db = useSQLiteContext();
   const [patients, setPatients] = useState<Patient[] | null>(null);
   const [query, setQuery] = useState('');
@@ -99,7 +101,7 @@ export default function PatientsScreen() {
 
   return (
     <View style={styles.screen}>
-      <View style={styles.actions}>
+      <View style={[styles.actions, { paddingHorizontal: gutter }]}>
         <SearchField value={query} onChangeText={setQuery} />
         <Button label="+ Nueva paciente" onPress={() => openNew()} />
       </View>

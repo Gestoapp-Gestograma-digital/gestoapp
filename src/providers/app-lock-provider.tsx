@@ -13,6 +13,7 @@ import { AppState, Platform, StyleSheet, View } from 'react-native';
 
 import { LockScreen } from '@/components/lock-screen';
 import { getSettings, setSettings } from '@/db/settings';
+import { DEVICE_NAME } from '@/lib/device';
 import { logError } from '@/lib/log';
 import { useProfile } from '@/providers/profile-provider';
 
@@ -39,7 +40,7 @@ function methodName(types: LocalAuthentication.AuthenticationType[]) {
   const { FACIAL_RECOGNITION, FINGERPRINT } = LocalAuthentication.AuthenticationType;
   if (types.includes(FACIAL_RECOGNITION)) return Platform.OS === 'ios' ? 'Face ID' : 'tu rostro';
   if (types.includes(FINGERPRINT)) return Platform.OS === 'ios' ? 'Touch ID' : 'tu huella';
-  return 'el código del teléfono';
+  return `el código del ${DEVICE_NAME}`;
 }
 
 /**
@@ -51,7 +52,7 @@ export function AppLockProvider({ children }: PropsWithChildren) {
   const { loading, ready } = useProfile();
   const [enabled, setEnabledState] = useState<boolean | null>(null);
   const [available, setAvailable] = useState<boolean | null>(null);
-  const [method, setMethod] = useState('el código del teléfono');
+  const [method, setMethod] = useState(`el código del ${DEVICE_NAME}`);
   const [locked, setLocked] = useState(true);
   const [unlocking, setUnlocking] = useState(false);
   const unlockingRef = useRef(false);

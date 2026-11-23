@@ -22,6 +22,7 @@ import {
   InvalidBackupFileError,
   WrongPasswordError,
 } from '@/lib/backup-crypto';
+import { useContentGutter } from '@/hooks/use-content-gutter';
 import { useErrorDialog } from '@/providers/error-dialog-provider';
 import { useProfile } from '@/providers/profile-provider';
 import { useToast } from '@/providers/toast-provider';
@@ -43,6 +44,7 @@ function patientsLabel(count: number) {
 
 /** Importar: abre una copia con su contraseña y reemplaza las pacientes y el perfil actuales. */
 export default function ImportBackupScreen() {
+  const gutter = useContentGutter(16);
   const db = useSQLiteContext();
   const { showSavedProfile } = useProfile();
   const showError = useErrorDialog();
@@ -124,7 +126,7 @@ export default function ImportBackupScreen() {
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <ScrollView
           style={styles.flex}
-          contentContainerStyle={styles.content}
+          contentContainerStyle={[styles.content, { paddingHorizontal: gutter }]}
           keyboardShouldPersistTaps="handled">
           <Text style={styles.lead}>
             Elegí el archivo que guardaste con «Exportar copia» y escribí su contraseña. La copia
@@ -165,7 +167,7 @@ export default function ImportBackupScreen() {
           ) : null}
         </ScrollView>
 
-        <SafeAreaView edges={['bottom']} style={styles.footer}>
+        <SafeAreaView edges={['bottom']} style={[styles.footer, { paddingHorizontal: gutter }]}>
           <Button
             label="Importar copia"
             size="lg"

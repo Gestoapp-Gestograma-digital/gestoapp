@@ -8,6 +8,7 @@ import { TextField } from '@/components/field';
 import { ScreenHeader } from '@/components/screen-header';
 import { TitlePicker } from '@/components/title-picker';
 import { greeting, type ProfileTitle } from '@/db/profile';
+import { useContentGutter } from '@/hooks/use-content-gutter';
 import { useErrorDialog } from '@/providers/error-dialog-provider';
 import { useProfile } from '@/providers/profile-provider';
 import { useToast } from '@/providers/toast-provider';
@@ -15,6 +16,7 @@ import { colors, fonts } from '@/theme';
 
 /** Perfil: el título y el nombre con los que se saluda en Inicio. */
 export default function ProfileScreen() {
+  const gutter = useContentGutter(16);
   const { profile, save } = useProfile();
   const showToast = useToast();
   const showError = useErrorDialog();
@@ -49,7 +51,7 @@ export default function ProfileScreen() {
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <ScrollView
           style={styles.flex}
-          contentContainerStyle={styles.content}
+          contentContainerStyle={[styles.content, { paddingHorizontal: gutter }]}
           keyboardShouldPersistTaps="handled">
           <TitlePicker value={title} onChange={setTitle} />
 
@@ -74,7 +76,7 @@ export default function ProfileScreen() {
 
         </ScrollView>
 
-        <SafeAreaView edges={['bottom']} style={styles.footer}>
+        <SafeAreaView edges={['bottom']} style={[styles.footer, { paddingHorizontal: gutter }]}>
           <Button
             label="Guardar cambios"
             size="lg"

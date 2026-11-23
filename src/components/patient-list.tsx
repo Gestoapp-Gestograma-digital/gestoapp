@@ -3,6 +3,7 @@ import { Pressable, SectionList, StyleSheet, Text, View, type RefreshControlProp
 
 import { Avatar } from '@/components/avatar';
 import type { Patient } from '@/db/patients';
+import { useContentGutter } from '@/hooks/use-content-gutter';
 import { dayFromIso, seenLabel } from '@/lib/dates';
 import { colors, fonts } from '@/theme';
 
@@ -32,6 +33,7 @@ type PatientListProps = {
  * las filas que están cerca de la pantalla, así que no se pone lento con muchas pacientes.
  */
 export function PatientList({ patients, today, onOpen, refreshControl, emptyComponent }: PatientListProps) {
+  const gutter = useContentGutter(16);
   const groups: Patient[][] = GROUP_TITLES.map(() => []);
   for (const patient of patients) {
     groups[groupIndex(today - (dayFromIso(patient.attendedAt) ?? today))].push(patient);
@@ -69,7 +71,7 @@ export function PatientList({ patients, today, onOpen, refreshControl, emptyComp
       keyboardShouldPersistTaps="handled"
       keyboardDismissMode="on-drag"
       style={styles.list}
-      contentContainerStyle={styles.content}
+      contentContainerStyle={[styles.content, { paddingHorizontal: gutter }]}
     />
   );
 }

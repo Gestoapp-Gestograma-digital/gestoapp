@@ -16,6 +16,7 @@ import {
   keyDates,
   MAX_GESTATION_LABEL,
 } from '@/lib/gestation';
+import { useContentGutter } from '@/hooks/use-content-gutter';
 import { HEIGHT_RANGE, parseMeasurement, WEIGHT_RANGE } from '@/lib/measurements';
 import { useErrorDialog } from '@/providers/error-dialog-provider';
 import { colors, fonts } from '@/theme';
@@ -50,6 +51,7 @@ type PatientFormProps = {
 
 /** Alta y edición de una paciente, en pantalla completa con el botón de guardar fijo abajo. */
 export function PatientForm({ mode, initialValues, onSubmit }: PatientFormProps) {
+  const gutter = useContentGutter(16);
   const [values, setValues] = useState(initialValues);
   const [saving, setSaving] = useState(false);
   const showError = useErrorDialog();
@@ -126,7 +128,7 @@ export function PatientForm({ mode, initialValues, onSubmit }: PatientFormProps)
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <ScrollView
           style={styles.flex}
-          contentContainerStyle={styles.content}
+          contentContainerStyle={[styles.content, { paddingHorizontal: gutter }]}
           keyboardShouldPersistTaps="handled">
           <TextField
             label="Nombre y apellido"
@@ -212,7 +214,7 @@ export function PatientForm({ mode, initialValues, onSubmit }: PatientFormProps)
           ) : null}
         </ScrollView>
 
-        <SafeAreaView edges={['bottom']} style={styles.footer}>
+        <SafeAreaView edges={['bottom']} style={[styles.footer, { paddingHorizontal: gutter }]}>
           {reference || keepsStoredFum ? null : (
             <Text style={styles.requirement}>Cargá la FUM o una ecografía para guardar.</Text>
           )}
