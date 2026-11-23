@@ -2,6 +2,8 @@ import type { SQLiteDatabase } from 'expo-sqlite';
 
 import { isoFromDay, todayDay } from '@/lib/dates';
 
+import { withWriteTransaction } from './transaction';
+
 export type Patient = {
   id: number;
   name: string;
@@ -64,84 +66,92 @@ export function getPatient(db: SQLiteDatabase, id: number) {
 
 export async function insertPatient(db: SQLiteDatabase, patient: NewPatient): Promise<number> {
   const today = isoFromDay(todayDay());
-  const result = await db.runAsync(
-    `INSERT INTO patients
+  const result = await withWriteTransaction(db, () =>
+    db.runAsync(
+      `INSERT INTO patients
        (name, age, weight, height_cm, fum, eco_date, eco_ga_days, note, note_updated_at, attended_at)
      VALUES
        ($name, $age, $weight, $heightCm, $fum, $ecoDate, $ecoGaDays, $note, $noteUpdatedAt, $attendedAt)`,
-    {
-      $name: patient.name,
-      $age: patient.age,
-      $weight: patient.weight,
-      $heightCm: patient.heightCm,
-      $fum: patient.fum,
-      $ecoDate: patient.ecoDate,
-      $ecoGaDays: patient.ecoGaDays,
-      $note: patient.note,
-      $noteUpdatedAt: patient.note ? today : null,
-      $attendedAt: today,
-    },
+      {
+        $name: patient.name,
+        $age: patient.age,
+        $weight: patient.weight,
+        $heightCm: patient.heightCm,
+        $fum: patient.fum,
+        $ecoDate: patient.ecoDate,
+        $ecoGaDays: patient.ecoGaDays,
+        $note: patient.note,
+        $noteUpdatedAt: patient.note ? today : null,
+        $attendedAt: today,
+      },
+    ),
   );
   notifyPatientsChanged();
   return result.lastInsertRowId;
 }
 
 export async function updatePatient(db: SQLiteDatabase, id: number, patient: PatientData) {
-  await db.runAsync(
-    `UPDATE patients
+  await withWriteTransaction(db, () =>
+    db.runAsync(
+      `UPDATE patients
      SET name = $name, age = $age, weight = $weight, height_cm = $heightCm, fum = $fum,
          eco_date = $ecoDate, eco_ga_days = $ecoGaDays
      WHERE id = $id`,
-    {
-      $id: id,
-      $name: patient.name,
-      $age: patient.age,
-      $weight: patient.weight,
-      $heightCm: patient.heightCm,
-      $fum: patient.fum,
-      $ecoDate: patient.ecoDate,
-      $ecoGaDays: patient.ecoGaDays,
-    },
+      {
+        $id: id,
+        $name: patient.name,
+        $age: patient.age,
+        $weight: patient.weight,
+        $heightCm: patient.heightCm,
+        $fum: patient.fum,
+        $ecoDate: patient.ecoDate,
+        $ecoGaDays: patient.ecoGaDays,
+      },
+    ),
   );
   notifyPatientsChanged();
 }
 
 /** Reemplaza la nota de la paciente y registra la fecha de hoy. */
 export async function updatePatientNote(db: SQLiteDatabase, id: number, note: string) {
-  await db.runAsync(
-    'UPDATE patients SET note = ?, note_updated_at = ? WHERE id = ?',
-    note,
-    isoFromDay(todayDay()),
-    id,
+  await withWriteTransaction(db, () =>
+    db.runAsync(
+      'UPDATE patients SET note = ?, note_updated_at = ? WHERE id = ?',
+      note,
+      isoFromDay(todayDay()),
+      id,
+    ),
   );
   notifyPatientsChanged();
 }
 
 export async function deletePatient(db: SQLiteDatabase, id: number) {
-  await db.runAsync('DELETE FROM patients WHERE id = ?', id);
+  await withWriteTransaction(db, () => db.runAsync('DELETE FROM patients WHERE id = ?', id));
   notifyPatientsChanged();
 }
 
 /** Vuelve a insertar una paciente eliminada con el mismo id y todos sus datos («Deshacer»). */
 export async function restorePatient(db: SQLiteDatabase, patient: Patient) {
-  await db.runAsync(
-    `INSERT INTO patients
+  await withWriteTransaction(db, () =>
+    db.runAsync(
+      `INSERT INTO patients
        (id, name, age, weight, height_cm, fum, eco_date, eco_ga_days, note, note_updated_at, attended_at)
      VALUES
        ($id, $name, $age, $weight, $heightCm, $fum, $ecoDate, $ecoGaDays, $note, $noteUpdatedAt, $attendedAt)`,
-    {
-      $id: patient.id,
-      $name: patient.name,
-      $age: patient.age,
-      $weight: patient.weight,
-      $heightCm: patient.heightCm,
-      $fum: patient.fum,
-      $ecoDate: patient.ecoDate,
-      $ecoGaDays: patient.ecoGaDays,
-      $note: patient.note,
-      $noteUpdatedAt: patient.noteUpdatedAt,
-      $attendedAt: patient.attendedAt,
-    },
+      {
+        $id: patient.id,
+        $name: patient.name,
+        $age: patient.age,
+        $weight: patient.weight,
+        $heightCm: patient.heightCm,
+        $fum: patient.fum,
+        $ecoDate: patient.ecoDate,
+        $ecoGaDays: patient.ecoGaDays,
+        $note: patient.note,
+        $noteUpdatedAt: patient.noteUpdatedAt,
+        $attendedAt: patient.attendedAt,
+      },
+    ),
   );
   notifyPatientsChanged();
 }
