@@ -52,8 +52,11 @@ export default function HomeTabsLayout() {
       <View style={styles.slot}>
         <TabSlot />
       </View>
+      {/* Hijo de un Slot (asChild): Expo Router pide el estilo aplanado, no un array. */}
       <TabList asChild>
-        <SafeAreaView edges={['bottom']} style={[styles.tabBar, { paddingHorizontal: gutter }]}>
+        <SafeAreaView
+          edges={['bottom']}
+          style={StyleSheet.flatten([styles.tabBar, { paddingHorizontal: gutter }])}>
           {/* Cálculo rápido va primero y es la pestaña con la que abre la app («/»). */}
           <TabTrigger name="index" href="/" asChild>
             <TabButton label="Cálculo rápido" />
