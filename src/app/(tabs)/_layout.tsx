@@ -64,7 +64,9 @@ export default function HomeTabsLayout() {
   );
 }
 
-type TabButtonProps = TabTriggerSlotProps & {
+// Sin el `ref` de TabTriggerSlotProps: lo tipa con el componente View y no con la instancia, como
+// pide la API estricta de React Native. El ref sigue llegando en las props y pasa al Pressable.
+type TabButtonProps = Omit<TabTriggerSlotProps, 'ref'> & {
   label: string;
 };
 

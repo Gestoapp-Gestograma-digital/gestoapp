@@ -24,7 +24,7 @@ type PatientListProps = {
   onOpen: (patient: Patient) => void;
   refreshControl?: ReactElement<RefreshControlProps>;
   /** Se muestra cuando no hay ninguna paciente para listar (ej. una búsqueda sin resultados). */
-  emptyComponent?: ReactElement | null;
+  emptyComponent?: ReactElement;
 };
 
 /**

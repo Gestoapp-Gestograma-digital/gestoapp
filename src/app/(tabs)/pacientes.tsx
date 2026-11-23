@@ -27,10 +27,10 @@ export default function PatientsScreen() {
   const showError = useErrorDialog();
   const today = useToday();
 
-  /** Devuelve si se cargó. Si falla con el listado ya en pantalla, se deja el que estaba. */
   // Número de la última carga pedida: si una respuesta llega después de otra más nueva, se descarta.
   const latestLoad = useRef(0);
 
+  /** Devuelve si se cargó. Si falla con el listado ya en pantalla, se deja el que estaba. */
   const load = useCallback(async () => {
     const request = ++latestLoad.current;
     try {
@@ -134,7 +134,7 @@ export default function PatientsScreen() {
                   onPress={() => openNew(trimmedQuery)}
                 />
               </View>
-            ) : null
+            ) : undefined
           }
         />
       )}

@@ -54,7 +54,7 @@ export default function ExportBackupScreen() {
       clearOldExports();
       const file = new File(Paths.cache, `${FILE_PREFIX}${isoFromDay(todayDay())}.json`);
       file.create({ overwrite: true });
-      file.write(content);
+      await file.write(content);
       await Sharing.shareAsync(file.uri, {
         mimeType: 'application/json',
         UTI: 'public.json',
