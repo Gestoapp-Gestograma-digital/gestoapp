@@ -9,7 +9,7 @@ export function contentGutter(windowWidth: number, base: number) {
 
 /**
  * Margen lateral del contenido: `base` en el teléfono y, cuando la ventana es más ancha que la
- * columna (iPad, pantalla dividida, ventana redimensionada), lo necesario para centrarla en
+ * columna (tablets Android, plegables, ventana redimensionada), lo necesario para centrarla en
  * CONTENT_MAX_WIDTH. Como es un padding, las barras con fondo siguen ocupando todo el ancho.
  */
 export function useContentGutter(base: number) {

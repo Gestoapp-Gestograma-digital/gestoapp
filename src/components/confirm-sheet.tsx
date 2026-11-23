@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   sheet: {
-    // En iPad la hoja no ocupa todo el ancho: se centra con el de la columna de contenido.
+    // En pantallas anchas la hoja no ocupa todo el ancho: se centra con el de la columna de contenido.
     width: '100%',
     maxWidth: CONTENT_MAX_WIDTH,
     alignSelf: 'center',

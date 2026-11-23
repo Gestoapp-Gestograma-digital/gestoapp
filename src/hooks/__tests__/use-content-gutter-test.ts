@@ -9,14 +9,14 @@ describe('contentGutter', () => {
   });
 
   test('en una ventana ancha centra la columna en el ancho máximo', () => {
-    // iPad de 11" en vertical y en horizontal.
+    // Tablet de 11" en vertical y en horizontal.
     for (const width of [820, 1180]) {
       const gutter = contentGutter(width, 16);
       expect(width - 2 * gutter).toBe(CONTENT_MAX_WIDTH);
     }
   });
 
-  test('distintos márgenes base quedan alineados en iPad', () => {
+  test('distintos márgenes base quedan alineados en una tablet', () => {
     expect(contentGutter(1024, 8)).toBe(contentGutter(1024, 20));
   });
 

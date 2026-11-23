@@ -20,7 +20,7 @@ type ScreenHeaderProps = {
 
 /** Barra superior de las pantallas secundarias: botón Atrás, título opcional centrado y una acción. */
 export function ScreenHeader({ title, backLabel, backChevron, right, divider }: ScreenHeaderProps) {
-  // En iPad el botón de volver y la acción se alinean con la columna de contenido.
+  // En pantallas anchas el botón de volver y la acción se alinean con la columna de contenido.
   const gutter = useContentGutter(8);
   return (
     <SafeAreaView edges={['top']} style={styles.safeArea}>

@@ -16,7 +16,7 @@ import { useToday } from '@/providers/today-provider';
 export default function HomeTabsLayout() {
   const { profile } = useProfile();
   const today = useToday();
-  // En iPad el saludo y las pestañas se alinean con la columna de contenido.
+  // En pantallas anchas (tablets Android) el saludo y las pestañas se alinean con la columna de contenido.
   const gutter = useContentGutter(16);
 
   return (

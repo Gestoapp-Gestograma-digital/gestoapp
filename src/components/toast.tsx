@@ -105,7 +105,7 @@ export function Toast({ message, placement, leaving, onUndo, onClose, onExited }
 
 const styles = StyleSheet.create({
   toast: {
-    // left y right salen de useContentGutter: 12 en el teléfono, centrado en iPad.
+    // left y right salen de useContentGutter: 12 en el teléfono, centrado en pantallas anchas.
     position: 'absolute',
     zIndex: 20,
     // 44 de los botones + 6 arriba y abajo.

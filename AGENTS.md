@@ -41,9 +41,9 @@ Docs: https://docs.expo.dev/eas/index.md
 - Expo Go only includes its bundled native modules. After adding a library with native code, the app needs a development build: `npx expo run:ios|android` locally, or `eas build --profile development`.
 - Prefer recommended Expo modules over third-party libraries, and check your available skills before adding dependencies. Docs: https://docs.expo.dev/versions/latest/index.md
 
-## iPad y ventanas anchas
+## Tablets y ventanas anchas
 
-La app soporta iPad (`ios.supportsTablet`), con todas las orientaciones en iPad y solo vertical en iPhone. Desde iOS 27 las ventanas además se pueden redimensionar, así que ninguna pantalla puede depender del ancho del teléfono. El contenido va en una columna centrada de `CONTENT_MAX_WIDTH` (600 pt, en `src/theme`): en cada pantalla nueva, usar `useContentGutter(base)` de `src/hooks/use-content-gutter.ts` como `paddingHorizontal` del contenido y de las barras fijas (encabezado, botón de abajo), y `maxWidth: CONTENT_MAX_WIDTH` en hojas y diálogos. En los textos, nombrar el dispositivo con `DEVICE_NAME` de `src/lib/device.ts` («iPad» o «teléfono»).
+En iOS la app es solo para iPhone (`ios.supportsTablet: false`, decidido para no tener que mantener capturas de iPad en la tienda); en un iPad corre en modo de compatibilidad, con la interfaz de iPhone. Si se vuelve a activar el iPad, App Store Connect pide capturas de iPad de 13" sacadas en un iPad. En Android sí puede instalarse en tablets y plegables, así que ninguna pantalla puede depender del ancho del teléfono. El contenido va en una columna centrada de `CONTENT_MAX_WIDTH` (600 pt, en `src/theme`): en cada pantalla nueva, usar `useContentGutter(base)` de `src/hooks/use-content-gutter.ts` como `paddingHorizontal` del contenido y de las barras fijas (encabezado, botón de abajo), y `maxWidth: CONTENT_MAX_WIDTH` en hojas y diálogos. En los textos, nombrar el dispositivo con `DEVICE_NAME` de `src/lib/device.ts` («iPad» o «teléfono»).
 
 ## Términos y Condiciones y Política de Privacidad
 
@@ -66,7 +66,7 @@ Expo Go no trae SQLCipher ni Face ID. En Expo Go la app sigue funcionando, pero 
 
 ### Configuración que falta antes de publicar
 
-- **`app.json`:** listo. Nombre visible `GestoApp`, `ios.bundleIdentifier` y `android.package` `com.gestoapp` (no se pueden cambiar una vez publicados) y `ios.supportsTablet: true`. `versionCode` y `buildNumber` los maneja EAS (`appVersionSource: "remote"` y `autoIncrement` en `production`).
+- **`app.json`:** listo. Nombre visible `GestoApp`, `ios.bundleIdentifier` y `android.package` `com.gestoapp` (no se pueden cambiar una vez publicados) y `ios.supportsTablet: false` (solo iPhone). `versionCode` y `buildNumber` los maneja EAS (`appVersionSource: "remote"` y `autoIncrement` en `production`).
 - **`eas.json`:** listo, con los perfiles `development` (usa `expo-dev-client`), `preview` (APK para instalar directo) y `production` (AAB para Play). Ya está vinculado con EAS (`extra.eas.projectId` y `owner` en `app.json`).
 - **Cifrado y exportación (iOS):** declarado `ITSAppUsesNonExemptEncryption: false` en `ios.infoPlist`. En iOS el cifrado usa las librerías de Apple (SQLCipher compilado con CommonCrypto en la base, AES de `expo-crypto` en la copia), así que no hace falta documentación de exportación. Si se agrega cifrado propio o una librería que traiga el suyo, revisar esta declaración.
 - **Permisos de Android:** revisar el `AndroidManifest.xml` que genera el prebuild y bloquear con `android.blockedPermissions` todo lo que no se use. `READ_MEDIA_IMAGES`, que agrega `expo-screen-capture`, y los permisos de almacenamiento ya están bloqueados: la base vive en el espacio privado de la app y las copias usan los selectores del sistema. La política de privacidad dice que la app no usa la cámara, la ubicación, los contactos, el micrófono ni las fotos. `expo-local-authentication` agrega `USE_BIOMETRIC` (necesario) y `USE_FINGERPRINT` (obsoleto).
