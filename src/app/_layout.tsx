@@ -1,14 +1,9 @@
 import {
-  AtkinsonHyperlegibleMono_400Regular,
-  AtkinsonHyperlegibleMono_500Medium,
-  AtkinsonHyperlegibleMono_700Bold,
-} from '@expo-google-fonts/atkinson-hyperlegible-mono';
-import {
-  AtkinsonHyperlegibleNext_400Regular,
-  AtkinsonHyperlegibleNext_500Medium,
-  AtkinsonHyperlegibleNext_600SemiBold,
-  AtkinsonHyperlegibleNext_700Bold,
-} from '@expo-google-fonts/atkinson-hyperlegible-next';
+  Geist_400Regular,
+  Geist_500Medium,
+  Geist_600SemiBold,
+  Geist_700Bold,
+} from '@expo-google-fonts/geist';
 import { useFonts } from 'expo-font';
 import { Stack, type ErrorBoundaryProps } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
@@ -41,13 +36,10 @@ export function ErrorBoundary({ error, retry }: ErrorBoundaryProps) {
 
 export default function RootLayout() {
   const [fontsLoaded, fontError] = useFonts({
-    AtkinsonHyperlegibleNext_400Regular,
-    AtkinsonHyperlegibleNext_500Medium,
-    AtkinsonHyperlegibleNext_600SemiBold,
-    AtkinsonHyperlegibleNext_700Bold,
-    AtkinsonHyperlegibleMono_400Regular,
-    AtkinsonHyperlegibleMono_500Medium,
-    AtkinsonHyperlegibleMono_700Bold,
+    Geist_400Regular,
+    Geist_500Medium,
+    Geist_600SemiBold,
+    Geist_700Bold,
   });
   const database = useDatabaseConfig();
   usePrivacyScreen();

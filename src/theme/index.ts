@@ -37,12 +37,16 @@ export const colors = Object.fromEntries(
 /** Ancho máximo de la columna de contenido: en iPad, o con la ventana ancha, se centra. */
 export const CONTENT_MAX_WIDTH = 600;
 
+/**
+ * Toda la app usa Geist. Los nombres `mono*` quedan para fechas y números, que antes iban en
+ * monoespaciada; ahora son pesos de Geist.
+ */
 export const fonts = {
-  regular: 'AtkinsonHyperlegibleNext_400Regular',
-  medium: 'AtkinsonHyperlegibleNext_500Medium',
-  semibold: 'AtkinsonHyperlegibleNext_600SemiBold',
-  bold: 'AtkinsonHyperlegibleNext_700Bold',
-  mono: 'AtkinsonHyperlegibleMono_400Regular',
-  monoMedium: 'AtkinsonHyperlegibleMono_500Medium',
-  monoBold: 'AtkinsonHyperlegibleMono_700Bold',
+  regular: 'Geist_400Regular',
+  medium: 'Geist_500Medium',
+  semibold: 'Geist_600SemiBold',
+  bold: 'Geist_700Bold',
+  mono: 'Geist_400Regular',
+  monoMedium: 'Geist_500Medium',
+  monoBold: 'Geist_700Bold',
 } as const;
